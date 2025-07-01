@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young4ChickS - Urban Brooder Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-egg"></i>
+                    <span>Young4ChickS</span>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#" class="nav-link" onclick="showPage('home')">Home</a>
+                    <a href="#" class="nav-link" onclick="showPage('about')">About</a>
+                    <a href="#" class="nav-link" onclick="showPage('login')" id="login-link">Login</a>
+                    <a href="#" class="nav-link" onclick="showPage('register')" id="register-link">Register</a>
+                    <a href="#" class="nav-link" onclick="logout()" id="logout-link" style="display: none;">Logout</a>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <header class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to Young4ChickS</h1>
+                    <p>Empowering young urban dwellers (18-30) to create wealth through poultry farming</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>UGx 1,650</h3>
+                            <p>Per Chick</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100-500</h3>
+                            <p>Chicks Available</p>
+                        </div>
+                        <div class="stat">
+                            <h3>2 Bags</h3>
+                            <p>Free Feed</p>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showPage('register')">Get Started</button>
+                        <button class="btn btn-secondary" onclick="showPage('about')">Learn More</button>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <div class="container">
+                <h2>About Young4ChickS</h2>
+                <div class="about-content">
+                    <div class="about-section">
+                        <h3>Our Mission</h3>
+                        <p>Founded by a youth Member of Parliament, Young4ChickS facilitates young urban dwellers to stimulate wealth creation and money economy involvement through poultry farming.</p>
+                    </div>
+                    <div class="about-section">
+                        <h3>What We Offer</h3>
+                        <ul>
+                            <li>Quality layer and broiler chicks (local and exotic)</li>
+                            <li>Fixed pricing at UGx 1,650 per chick</li>
+                            <li>2 bags of feed per farmer (payable after 2 months)</li>
+                            <li>Support for both starter and returning farmers</li>
+                        </ul>
+                    </div>
+                    <div class="about-section">
+                        <h3>Eligibility</h3>
+                        <ul>
+                            <li>Youth aged 18-30 years</li>
+                            <li>Must be registered with recommender details</li>
+                            <li>Starter farmers: Maximum 100 chicks</li>
+                            <li>Returning farmers: Maximum 500 chicks</li>
+                            <li>Requests allowed once every 4 months</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2>Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-role">Login as:</label>
+                            <select id="user-role" required>
+                                <option value="">Select Role</option>
+                                <option value="customer">Young Farmer</option>
+                                <option value="sales">Sales Representative</option>
+                                <option value="manager">Brooder Manager</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" onclick="showPage('register')">Register here</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register-page" class="page">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2>Register as Young Farmer</h2>
+                    <form id="register-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-name">Full Name</label>
+                                <input type="text" id="reg-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-age">Age</label>
+                                <input type="number" id="reg-age" min="18" max="30" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-gender">Gender</label>
+                                <select id="reg-gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-contact">Contact</label>
+                                <input type="tel" id="reg-contact" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-nin">Your NIN Number</label>
+                            <input type="text" id="reg-nin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-recommender-name">Recommender's Name</label>
+                            <input type="text" id="reg-recommender-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-recommender-nin">Recommender's NIN Number</label>
+                            <input type="text" id="reg-recommender-nin" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                    <p>Already have an account? <a href="#" onclick="showPage('login')">Login here</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Dashboard -->
+        <div id="customer-dashboard" class="page dashboard">
+            <div class="dashboard-header">
+                <h2>Young Farmer Dashboard</h2>
+                <div class="user-info">
+                    <span id="customer-name"></span>
+                    <span class="user-role">Young Farmer</span>
+                </div>
+            </div>
+            <div class="dashboard-content">
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h3>My Requests</h3>
+                        <p id="customer-requests-count">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total Chicks Received</h3>
+                        <p id="customer-chicks-count">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Next Request Available</h3>
+                        <p id="next-request-date">Now</p>
+                    </div>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" onclick="showRequestForm()" id="request-btn">Request Chicks</button>
+                    <button class="btn btn-secondary" onclick="showMyRequests()">View My Requests</button>
+                </div>
+                <div id="customer-content">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Sales Dashboard -->
+        <div id="sales-dashboard" class="page dashboard">
+            <div class="dashboard-header">
+                <h2>Sales Representative Dashboard</h2>
+                <div class="user-info">
+                    <span id="sales-name"></span>
+                    <span class="user-role">Sales Rep</span>
+                </div>
+            </div>
+            <div class="dashboard-content">
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h3>Pending Requests</h3>
+                        <p id="pending-requests-count">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Approved Requests</h3>
+                        <p id="approved-requests-count">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Completed Sales</h3>
+                        <p id="completed-sales-count">0</p>
+                    </div>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" onclick="showAllRequests()">View All Requests</button>
+                    <button class="btn btn-secondary" onclick="showSalesHistory()">Sales History</button>
+                </div>
+                <div id="sales-content">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Manager Dashboard -->
+        <div id="manager-dashboard" class="page dashboard">
+            <div class="dashboard-header">
+                <h2>Brooder Manager Dashboard</h2>
+                <div class="user-info">
+                    <span id="manager-name"></span>
+                    <span class="user-role">Manager</span>
+                </div>
+            </div>
+            <div class="dashboard-content">
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h3>Total Stock</h3>
+                        <p id="total-stock">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pending Approvals</h3>
+                        <p id="pending-approvals-count">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Registered Farmers</h3>
+                        <p id="total-farmers">0</p>
+                    </div>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" onclick="showStockManagement()">Manage Stock</button>
+                    <button class="btn btn-secondary" onclick="showPendingApprovals()">Pending Approvals</button>
+                    <button class="btn btn-success" onclick="showAllFarmers()">View Farmers</button>
+                </div>
+                <div id="manager-content">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
